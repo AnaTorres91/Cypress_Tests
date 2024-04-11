@@ -32,6 +32,9 @@ describe('template spec', () => {
     it('Borrar tarea', () => {
         cy.visit('https://todomvc.com/examples/react/dist/#/')
         cy.get('[data-testid="text-input"]').type('tarea5{enter}')
+        cy.location().should(loc)
+        cy.get('[data-testid="todo-item-label"]').frontground('destroy button')
+        
 
 })
 
