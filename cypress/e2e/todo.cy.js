@@ -32,14 +32,15 @@ describe('template spec', () => {
     it('Borrar tarea', () => {
         cy.visit('https://todomvc.com/examples/react/dist/#/')
         cy.get('[data-testid="text-input"]').type('tarea5{enter}')
-        cy.location().should(loc)
-        cy.get('[data-testid="todo-item-label"]').frontground('destroy button')
+     // cy.get('[data-testid="todo-item"]').trigger('mouseover')    
+        cy.get('[data-testid="todo-item"]').trigger('mouseover')
+        cy.get('.destroy').click({force:true})
+    
         
+    })
 
-})
-
-it('Filtrar tareas', () => {
-    cy.visit('https://todomvc.com/examples/react/dist/#/')
+    it('Filtrar tareas', () => {
+        cy.visit('https://todomvc.com/examples/react/dist/#/')
         cy.get('[data-testid="text-input"]').type('tarea1{enter}')
         cy.get('[data-testid="text-input"]').type('tarea2{enter}')
         cy.get('[data-testid="text-input"]').type('tarea3{enter}')
