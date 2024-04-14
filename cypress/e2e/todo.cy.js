@@ -32,7 +32,7 @@ describe('template spec', () => {
     it('Borrar tarea', () => {
         cy.visit('https://todomvc.com/examples/react/dist/#/')
         cy.get('[data-testid="text-input"]').type('tarea5{enter}')
-     // cy.get('[data-testid="todo-item"]').trigger('mouseover')    
+    
         cy.get('[data-testid="todo-item"]').trigger('mouseover')
         cy.get('.destroy').click({force:true})
     
@@ -46,8 +46,14 @@ describe('template spec', () => {
         cy.get('[data-testid="text-input"]').type('tarea3{enter}')
         cy.get('[data-testid="text-input"]').type('tarea4{enter}')
         cy.get('[data-testid="text-input"]').type('tarea5{enter}')
+        cy.get(':nth-child(3) > .view > [data-testid="todo-item-toggle"]').check()
         cy.get('[data-testid="footer-navigation"] > :nth-child(3) > a').click()
+        cy.get('[data-testid="todo-item-label"]').first('.completed')
         cy.get(':nth-child(2) > a').click()
+        cy.get(':nth-child(1) > .view > [data-testid="todo-item-label"]').should('be.visible')
+        cy.get(':nth-child(1) > .view > [data-testid="todo-item-label"]').should('be.visible')
+        cy.get(':nth-child(3) > .view > [data-testid="todo-item-label"]').should('be.visible')
+        cy.get(':nth-child(4) > .view > [data-testid="todo-item-label"]').should('be.visible')
         cy.get(':nth-child(1) > a').click()
      
     
